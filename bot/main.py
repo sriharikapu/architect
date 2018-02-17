@@ -1,6 +1,7 @@
 from flask import Blueprint, request, current_app as app
 from twilio.twiml.messaging_response import Message, MessagingResponse
 from twilio.rest import Client
+import requests
 
 main = Blueprint('main', __name__)
 
@@ -14,14 +15,25 @@ def index():
 
     # Get message info from sms.
     message = request.form['Body']
-    msg_from = request.form['From']
+    from_number = request.form['From']
+    message_sid = request.form['MessageSid']
+    media_url = request.form['MediaUrl0']
+    media_type = request.form['MediaContentType0']
+    print(media_url, media_type)
 
     # Interpret message.
     response = MessagingResponse()
     if message == 'hello':
         response.message = 'ethdenv woooo!'
+    if media_url:
+        with open('output.jpg', 'wb') as image:
+            image.write(requests.get(media_url).content)
+        response.message = 'thank you for joining!'
+        
+
 
     # Send response to user as sms.
-    client.messages.create(to=msg_from, from_=account_num, body=response.message)
+    client.messages.create(to=from_number, from_=account_num, body=response.message)
 
     return str(response)
+
