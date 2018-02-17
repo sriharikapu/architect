@@ -1,0 +1,6 @@
+.DS_Score/
+.vscode/
+__pycache__
+instance/*
+!example.cfg
+venv
