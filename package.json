@@ -1,0 +1,25 @@
+{
+  "name": "architect-backend",
+  "version": "1.0.0",
+  "description": "REST API for v0 of the Architect Project",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Meeshbhoombah/architect.git"
+  },
+  "keywords": [
+    "DAO",
+    "Blockchain",
+    "REST",
+    "API"
+  ],
+  "author": "Meeshbhoombah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Meeshbhoombah/architect/issues"
+  },
+  "homepage": "https://github.com/Meeshbhoombah/architect#readme"
+}
