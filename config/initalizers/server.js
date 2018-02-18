@@ -5,7 +5,8 @@
  */
 
 const express = require("express"),
-      path    = require("path");
+      path    = require("path"),
+      db      = require("../../lib/database");
 
 /* Environment Config */
 require("dotenv").config();
@@ -33,16 +34,19 @@ var start = function(cb) {
 
     /* Error Handling */
     app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.json({
-        message: err.message,
-        error: (app.get('env') === 'development' ? err : {})
-    });
+        res.status(err.status || 500);
+        res.json({
+            message: err.message,
+            error: (app.get('env') === 'development' ? err : {})
+        });
+        
         next(err);
     });
 
     app.listen(process.env.NODE_PORT);
     logger.info('[SERVER] Listening on port ' + process.env.NODE_PORT);
+
+    db.createFilestructure();
 
     if (cb) {
         return cb();
