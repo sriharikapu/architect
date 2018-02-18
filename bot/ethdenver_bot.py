@@ -14,9 +14,8 @@ pairs = [
     ['Would you like me to call uber eats?'],
 
   ],
-
   [
-    r'(.*|I am| My name is)',
+    r'(.*):name',
     ["""
       Nice to meet you, %1. I wish I had a name like that. I actually don't have a name yet...#awkward. 
       Would you like to set up an Archethtect account? Type yes or no.
@@ -47,12 +46,12 @@ pairs = [
     r'yes:proposals',
     ["""
       Here are a list of proposals on queue for voting. [Stronger Wifi @ EthDenver 2019, Shorter Opening Ceremonies, 
-      More Food Truck Options and more.] Which would you like to see? Type wife or ceremonies or food or more. 
+      More Food Truck Options and more.] Which would you like to see? Type wifi or ceremonies or food or more. 
       If you'd like to search by proposal category, type category.
       """],
   ],
   [
-    r'yes:learn',
+    r'yes:arch',
     ["""
       Wow! 😳 Thanks for being interested in me. Here's a link to learn more. 
       https://github.com/Meeshbhoombah/architect
@@ -129,9 +128,15 @@ reflections = {
   "me"         : "you"
 }
 
+chat = Chat(pairs, reflections)
+
+def get_response(user_message):
+    # Parse user message and return appropriate response
+    bot_response = chat.respond(user_message) 
+    return bot_response
+
 def ethdenver_bot():
     print("Welcome to the EthDenver Bot! What is your name?")
-    chat = Chat(pairs, reflections)
     chat.converse()
 
 
