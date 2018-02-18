@@ -7,14 +7,15 @@
 const express = require("express"),
       path    = require("path");
 
-/* MIDDLEWARE */
+/* Environment Config */
+require("dotenv").config();
+
+/* Middleware */
 const bodyParser = require("body-parser"),
       morgan     = require("morgan"),
-      logger     = require("winston"),
-      config     = require("nconf");
+      logger     = require("winston");
 
 var app;
-
 var start = function(cb) {
     "use strict";
 
@@ -37,8 +38,8 @@ var start = function(cb) {
         next(err);
     });
 
-    app.listen(config.get('NODE_PORT'));
-    logger.info('[SERVER] Listening on port ' + process.env.get('NODE_PORT'));
+    app.listen(process.env.NODE_PORT);
+    logger.info('[SERVER] Listening on port ' + process.env.NODE_PORT);
 
     if (cb) {
         return cb();
