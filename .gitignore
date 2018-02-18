@@ -1,3 +1,9 @@
+# Mac
+.DS_Store
+
+# Database
+db/
+
 # Logs
 logs
 *.log

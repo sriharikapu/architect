@@ -7,7 +7,8 @@
 "use strict";
 
 const server = require("./config/initalizers/server"),
-      async  = require("async");
+      async  = require("async"),
+      logger = require("winston");
 
 // load environment variables from .env
 require("dotenv").config();
@@ -18,9 +19,9 @@ async.series([
         server(callback);
     }], function(err) {
         if (err) {
-            console.log(err); 
+            logger.error(err);
         } else {
-            console.log("[Architect] Initalized Successfully"); 
+            logger.info('[SERVER] Initalized Sucessfully');
         }
     }
 );

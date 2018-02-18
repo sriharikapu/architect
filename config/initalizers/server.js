@@ -28,6 +28,9 @@ var start = function(cb) {
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json({type: '*/*'}));
 
+    logger.info('[SERVER] Initializing routes');
+    require('../../app/controllers/index')(app);
+
     /* Error Handling */
     app.use(function(err, req, res, next) {
     res.status(err.status || 500);
