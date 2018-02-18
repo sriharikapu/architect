@@ -26,5 +26,22 @@ export start = function(cb) {
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json({type: '*/*'}));
 
+    /* Error Handling */
+    app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.json({
+        message: err.message,
+        error: (app.get('env') === 'development' ? err : {})
+    });
+        next(err);
+    });
+
+    app.listen(config.get('NODE_PORT'));
+    logger.info('[SERVER] Listening on port ' + config.get('NODE_PORT'));
+
+    if (cb) {
+        return cb();
+    }
+    
 };
 
