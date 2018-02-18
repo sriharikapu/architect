@@ -64,7 +64,7 @@ that does not affect them directly.
 
 ## Technical Breakdown
 Architect leverages the smart contracts provided by DAOStack to build a simple shared 
-voting ecnonomy
+voting economy
 
 ## Team Members
 - Elliot Oliveira - Elliot has recently transitioned from the medical field to the technical 
