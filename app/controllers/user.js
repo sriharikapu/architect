@@ -4,6 +4,8 @@
  *
  */
 
+const database = require("../../lib//database");
+
 module.exports = function(router) {
     "use strict";
 
