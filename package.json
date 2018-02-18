@@ -23,6 +23,9 @@
   },
   "homepage": "https://github.com/Meeshbhoombah/architect#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0",
+    "winston": "^2.4.0"
   }
 }
