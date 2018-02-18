@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/Meeshbhoombah/architect/issues"
   },
-  "homepage": "https://github.com/Meeshbhoombah/architect#readme"
+  "homepage": "https://github.com/Meeshbhoombah/architect#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
