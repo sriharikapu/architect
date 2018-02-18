@@ -5,12 +5,10 @@
  */
 
 export Proposal = {
-    Title : "",
-    Body  : "",
-    Anon : false,
-    Authors : [],
-    Comments : [],
+    title    : "",
+    body     : "",
+    anon     : false,
+    authors  : [],
+    comments : [],
 };
-
-module.exports = Proposal;
 

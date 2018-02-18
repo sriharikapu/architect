@@ -6,3 +6,8 @@
 
 "use strict";
 
+// load environment variables from .env
+require("dotenv").loads();
+
+// 
+
