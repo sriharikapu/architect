@@ -21,7 +21,8 @@ async.series([
         if (err) {
             logger.error(err);
         } else {
-            logger.info('[SERVER] Initalized Sucessfully');
+            logger.info("[SERVER] Initalized Sucessfully");
         }
     }
 );
+
