@@ -43,30 +43,20 @@ def index():
     # Interpret message.
     print('prev_response: {}'.format(prev_response))
     if prev_response:
-        mudged = user_message
-        # User responded to name request.
-        if 'your name?' in prev_response:
-            # Reduce the message down to just the user's name.
-            mudged = ''.join([word for word in mudged.split(' ') if word not in ['my', 'name', 'is', 'i\'m', 'i am']])
-            name = mudged
-            mudged = mudged + ':name'
-        # User responded to account creation.
-        if 'Archethtect account?' in prev_response:
-            mudged = mudged + ':account'
-        # User responded to option to see proposals on queue or learn more about arch.
-        if 'proposals or arch' in prev_response and any(choice in mudged for choice in ['proposals', 'arch']):
-            mudged = 'yes:' + mudged
-        # Update user_message to bot readable format.
-        user_message = mudged
+        user_intent = _guess_user_intent(user_message, prev_response)
+    print('user_intent: {}'.format(user_intent))
 
     # Create resonse.
     response = MessagingResponse()
-    print('user_message: {}'.format(user_message))
-    response.message = get_response(user_message)
+    response.message = get_response(user_intent)
     flask_resp = make_response(str(response))
 
     # Update cookies.
-    flask_resp.set_cookie('prev_response', response.message)
+    if response.message:
+        flask_resp.set_cookie('prev_response', response.message)
+    else:
+        response.message = prev_response
+
     if name:
         flask_resp.set_cookie('user_name', name)
     if code:
@@ -93,3 +83,38 @@ def _save_qrcode(media_url):
 def _decode_qrcode():
     img = cv2.imread('qr-code.jpg')
     return zbar.decode(img)
+
+
+def _guess_user_intent(user_message, bot_prev_response):
+    intent = user_message
+    # User responded to name request.
+    if 'your name?' in bot_prev_response:
+        # Reduce the message down to just the user's name.
+        intent = ''.join([word for word in intent.split(' ') if word not in ['my', 'name', 'is', 'i\'m', 'i am']])
+        intent = intent
+        intent = intent + ':name'
+    # User responded to account creation.
+    if 'Archethtect account?' in bot_prev_response:
+        intent = intent + ':account'
+    # User responded to option to see proposals on queue or learn more about arch.
+    if 'proposals or arch' in bot_prev_response and any(choice in intent for choice in ['proposals', 'arch']):
+        intent = 'yes:' + intent
+    # User reponded to picking a proposal.
+    if 'queue for voting.' in bot_prev_response:
+        if 'wifi' in user_message:
+            intent = 'yes:wifi'
+        if 'ceremonies' in user_message:
+            intent = 'yes:ceremonies'
+        if 'food' in user_message:
+            intent = 'yes:food'
+        if 'more' in user_message:
+            intent = 'yes:more'
+    # User responded to seeing categories.
+    if 'type category.' in bot_prev_response:
+        intent = 'yes:category'
+    # User responded to picking category.
+    if 'which category' in bot_prev_response:
+        intent = 'soon'
+    
+    return intent
+        

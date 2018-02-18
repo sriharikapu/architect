@@ -16,16 +16,11 @@ pairs = [
   ],
   [
     r'(.*):name',
-    ["""
-      Nice to meet you, %1. I wish I had a name like that. I actually don't have a name yet...#awkward. 
-      Would you like to set up an Archethtect account? Type yes or no.
-      """],
+    ["""Nice to meet you, %1. I wish I had a name like that. I actually don't have a name yet...#awkward. Would you like to set up an Archethtect account? Type yes or no."""],
   ],
 	[
 		r'yes:account',
-		["""
-      gnarly! Please take a picture of your QR code. Send it to me and I'll do the rest! 
-      """],
+		["""Gnarly! Please take a picture of your QR code. Send it to me and I'll do the rest! """],
 	],
   [
     r'no:account',
@@ -33,10 +28,7 @@ pairs = [
   ],
   [
     r'yes:qrcode',
-    ["""
-      Account created. Would you like to see a list of current proposals or learn more about Archethtect? 
-      Type proposals or arch.
-      """],
+    ["""Account created. Would you like to see a list of current proposals or learn more about Archethtect? Type proposals or arch."""],
   ],
   [
     r'no:qrcode',
@@ -44,52 +36,23 @@ pairs = [
   ],
   [
     r'yes:proposals',
-    ["""
-      Here are a list of proposals on queue for voting. [Stronger Wifi @ EthDenver 2019, Shorter Opening Ceremonies, 
-      More Food Truck Options and more.] Which would you like to see? Type wifi or ceremonies or food or more. 
-      If you'd like to search by proposal category, type category.
-      """],
+    ["""Here are a list of proposals on queue for voting. [Stronger Wifi @ EthDenver 2019, Shorter Opening Ceremonies, More Food Truck Options and more.] Which would you like to see? Type wifi or ceremonies or food or more. If you'd like to search by proposal category, type category."""],
   ],
   [
     r'yes:arch',
-    ["""
-      Wow! 😳 Thanks for being interested in me. Here's a link to learn more. 
-      https://github.com/Meeshbhoombah/architect
-      """],
+    ["""Wow! 😳 Thanks for being interested in me. Here's a link to learn more. https://github.com/Meeshbhoombah/architect"""],
   ],
   [
     r'yes:wifi',
-    [ 
-      """
-      It's no secret that despite the valient efforts of the EthDenver organizers that the wifi 
-      this year was just short of disastrous. Therefore, in preparation for next year's event, 
-      I propose that in addition to forging partnerships with A1 blockchain and cryptocurrency
-      companies, that EthDenver collaborate with Comcast/AT&T to ensure that the bandwith of
-      the wifi modems can accomodate the # of hackers in the space. This is especially imperative
-      because EthDenver will only grow in interest and demand in the upcoming years.
-
-      """],
+    ["""It's no secret that despite the valient efforts of the EthDenver organizers that the wifi\nthis year was just short of disastrous. Therefore, in preparation for next year's event,\nI propose that in addition to forging partnerships with A1 blockchain and cryptocurrency\ncompanies, that EthDenver collaborate with Comcast/AT&T to ensure that the bandwith of\nthe wifi modems can accomodate the # of hackers in the space. This is especially imperative\nbecause EthDenver will only grow in interest and demand in the upcoming years."""],
   ],
   [
     r'yes:ceremonies',
-    [
-      """ 
-      Opening Ceremonies are a crucial part of every hackathon as they set the mood for the rest
-      of the event. It's also an important time to talk about the community and the type of community
-      we as hackers want to build in this space. However, a 2-hour ceremony is abhorrently long. Hackathons
-      are for hacking and time is precious. I propose that in the future, opening ceremonies are no longer than 1 hour long. 
-
-    """],
+    ["""Opening Ceremonies are a crucial part of every hackathon as they set the mood for the rest\nof the event. It's also an important time to talk about the community and the type of community\nwe as hackers want to build in this space. However, a 2-hour ceremony is abhorrently long. Hackathons\nare for hacking and time is precious. I propose that in the future, opening ceremonies are no longer than 1 hour long."""],
   ],
   [
     r'yes:food',
-    ["""
-    I'll be the first to say that the food truck line-up at EthDenver this year was phenomenal and exceeded my expectations. 
-    There were a variety of cuisines to choose from and the wait times were short. However, a lot of the food was really heavy.
-    As hackers we are sitting down for long periods of time with not much opportunity to walk around, it causes the body and mind
-    to be sluggish when hackathons require its' participants to keep a clear, sharp mind. I propose that for EthDenver 2019, the
-    organizers offer more healthy/vegan/vegetarian options.
-    """],
+    ["""I'll be the first to say that the food truck line-up at EthDenver this year was phenomenal and exceeded my expectations.\nThere were a variety of cuisines to choose from and the wait times were short. However, a lot of the food was really heavy.\nAs hackers we are sitting down for long periods of time with not much opportunity to walk around, it causes the body and mind\nto be sluggish when hackathons require its' participants to keep a clear, sharp mind. I propose that for EthDenver 2019, the\norganizers offer more healthy/vegan/vegetarian options."""],
   ],
   [
     r'yes:more',
@@ -106,6 +69,10 @@ pairs = [
   [
     r'yes:specific proposal',
     ["link."],
+  ],
+  [
+    r'soon',
+    ['Coming soon! Checkout https://github.com/Meeshbhoombah/architect to keep updated.']
   ]
 ]
 
