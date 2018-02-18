@@ -4,7 +4,9 @@
  *
  */
 
-const database = require("../../lib//database");
+const db       = require("../../lib/database"),
+      dbPath   = "../database/users/",
+      User     = require("../models/user.js");
 
 module.exports = function(router) {
     "use strict";
@@ -27,8 +29,24 @@ module.exports = function(router) {
     router.route('/')
         .get(function(req, res, next) {
         // Logic for GET /users routes
-        }).post(function(req, res, next) {
-        // Create new user
+        })
+        .post(function(req, res, next) {
+        
+            var user = User;
+
+            user = {
+                id : req.body.id,
+                first_name : req.body.first_name,
+                last_name : req.body.last_name
+            };
+
+            db.saveResource(dbPath, user);
+
+            res.status(200);
+            res.json({
+                User : user
+            });
+
         });
 };
 

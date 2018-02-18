@@ -5,7 +5,7 @@
  */
 
 const express = require("express"),
-      routes = require("require-dir");
+      routes = require("require-dir")();
 
 module.exports = function(app) {
     "use strict";

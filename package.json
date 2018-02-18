@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Meeshbhoombah/architect#readme",
   "dependencies": {
+    "@daostack/arc.js": "0.0.0-alpha.24",
     "async": "^2.6.0",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.0",
