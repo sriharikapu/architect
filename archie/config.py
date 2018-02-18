@@ -9,7 +9,7 @@ class HackConfig(object):
     HACKING = True
 
 config = {
-    "hack": "bot.config.HackConfig",
+    "hack": "archie.config.HackConfig",
 }
 
 def configure_app(app):

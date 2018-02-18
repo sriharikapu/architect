@@ -1,22 +1,19 @@
-# hugotbot.py
 from nltk.chat.util import Chat, reflections
 import nltk
-
 
 
 pairs = [
   [
     r'(Hi|Hello|Hey)',
-    ['Hey Friend! What is your name?'],
+    ['Hey Friend! I\'m Archie. What is your name?'],
   ],
   [
     r'Im hungry',
     ['Would you like me to call uber eats?'],
-
   ],
   [
     r'(.*):name',
-    ["""Nice to meet you, %1. I wish I had a name like that. I actually don't have a name yet...#awkward. Would you like to set up an Archethtect account? Type yes or no."""],
+    ["""Nice to meet you, %1. Would you like to set up an Archethtect account? Type yes or no."""],
   ],
 	[
 		r'yes:account',
@@ -36,7 +33,7 @@ pairs = [
   ],
   [
     r'yes:proposals',
-    ["""Here are a list of proposals on queue for voting. [Stronger Wifi @ EthDenver 2019, Shorter Opening Ceremonies, More Food Truck Options and more.] Which would you like to see? Type wifi or ceremonies or food or more. If you'd like to search by proposal category, type category."""],
+    ["""Here are a list of proposals on queue for voting.\n- Stronger Wifi @ EthDenver 2019\n- Shorter Opening Ceremonies\n- More Food Truck Options and more.\nWhich would you like to see? Type 'wifi' or 'ceremonies' or 'food' or 'more'.\nIf you'd like to search by proposal category, type 'category'."""],
   ],
   [
     r'yes:arch',
@@ -102,10 +99,10 @@ def get_response(user_message):
     bot_response = chat.respond(user_message) 
     return bot_response
 
-def ethdenver_bot():
+def bot():
     print("Welcome to the EthDenver Bot! What is your name?")
     chat.converse()
 
 
 if __name__ == "__main__":
-    ethdenver_bot()
+    bot()

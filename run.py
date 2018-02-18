@@ -1,4 +1,4 @@
-from bot import app
+from archie import app
 
 if __name__ == "__main__":
     app.run(use_reloader=True)

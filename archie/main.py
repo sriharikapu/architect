@@ -4,7 +4,7 @@ from twilio.rest import Client
 import requests
 import cv2
 import pyzbar.pyzbar as zbar
-from bot.ethdenver_bot import get_response
+from archie.bot import get_response
 
 main = Blueprint('main', __name__)
 
@@ -25,15 +25,19 @@ def index():
 
     # Get cookies 🍪🍪🍪
     prev_response = request.cookies.get('prev_response', None)
-    name = request.cookies.get('name', None)
+    name = request.cookies.get('user_name', None)
     code = request.cookies.get('qrcode', None)
+    
+    user_done_with_demo = 'https://github.com/Meeshbhoombah/architect' in prev_response
 
+    # if user_done_with_demo:
     # Handle account creation.
     user_sent_qrcode = media_url and media_type
     # Save and decode qrcode sent by new user.
     if user_sent_qrcode:
         _save_qrcode(media_url)
         code = _decode_qrcode()
+        print(code)
         if code:
             code = code[0].data
             user_message = 'yes:qrcode'
@@ -41,10 +45,9 @@ def index():
             user_message = 'no:qrcode'
 
     # Interpret message.
-    print('prev_response: {}'.format(prev_response))
+    user_intent = user_message  
     if prev_response:
         user_intent = _guess_user_intent(user_message, prev_response)
-    print('user_intent: {}'.format(user_intent))
 
     # Create resonse.
     response = MessagingResponse()
@@ -61,6 +64,14 @@ def index():
         flask_resp.set_cookie('user_name', name)
     if code:
         flask_resp.set_cookie('qrcode', code)
+
+    # if name and code:
+    #     user = {
+    #         'id': code.rsplit('/', 1)[-1],
+    #         'first_name': name
+    #     }
+    #     resp = requests.post('http://beb7d5ba.ngrok.io/user/', json=user)
+    #     print(resp)
     # Send response to user as sms.
     client.messages.create(to=from_number, from_=account_num, body=response.message)
 
@@ -109,9 +120,9 @@ def _guess_user_intent(user_message, bot_prev_response):
             intent = 'yes:food'
         if 'more' in user_message:
             intent = 'yes:more'
-    # User responded to seeing categories.
-    if 'type category.' in bot_prev_response:
-        intent = 'yes:category'
+        # User responded to seeing categories.
+        if 'category' in user_message:
+            intent = 'yes:category'
     # User responded to picking category.
     if 'which category' in bot_prev_response:
         intent = 'soon'
