@@ -4,9 +4,11 @@
  *
  */
 
-export User = {
+var User = {
     id         : 0,
     first_name : "",
     last_name  : "",
 };
+
+module.exports = User;
 

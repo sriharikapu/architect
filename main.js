@@ -6,10 +6,11 @@
 
 "use strict";
 
-const server = require("./config/initalizers/server");
+const server = require("./config/initalizers/server"),
+      async  = require("async");
 
 // load environment variables from .env
-require("dotenv").loads();
+require("dotenv").config();
 
 // Initalize Modules
 async.series([

@@ -4,17 +4,18 @@
  *
  */
 
-const express = require("express");
-const path    = require("path");
+const express = require("express"),
+      path    = require("path");
 
 /* MIDDLEWARE */
-const bodyParser = require("body-parser");
-const morgan     = require("morgan");
-const logger     = require("winston");
+const bodyParser = require("body-parser"),
+      morgan     = require("morgan"),
+      logger     = require("winston"),
+      config     = require("nconf");
 
 var app;
 
-export start = function(cb) {
+var start = function(cb) {
     "use strict";
 
     /* Create Instance of Express server */
@@ -37,11 +38,13 @@ export start = function(cb) {
     });
 
     app.listen(config.get('NODE_PORT'));
-    logger.info('[SERVER] Listening on port ' + config.get('NODE_PORT'));
+    logger.info('[SERVER] Listening on port ' + process.env.get('NODE_PORT'));
 
     if (cb) {
         return cb();
     }
     
 };
+
+module.exports = start;
 

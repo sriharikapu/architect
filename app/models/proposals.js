@@ -4,11 +4,13 @@
  *
  */
 
-export Proposal = {
+var Proposal = {
     title    : "",
     body     : "",
     anon     : false,
     authors  : [],
     comments : [],
 };
+
+module.exports = Proposal;
 
